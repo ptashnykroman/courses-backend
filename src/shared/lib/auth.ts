@@ -25,6 +25,7 @@ export const auth = betterAuth({
   trustedOrigins: [...(process.env.TRUSTED_ORIGINS || '').split(',')],
   emailAndPassword: { enabled: true },
   plugins: [admin(), multiSession()],
+  
   user: {
     additionalFields: {
       phone: { type: 'string' },
@@ -35,6 +36,7 @@ export const auth = betterAuth({
       jobTitle: { type: 'string' },
     },
   },
+  
   session: {
     expiresIn: 60 * 60 * 24 * 14, // 14 дней - реальная жизнь сессии
     updateAge: 60 * 60 * 24, // обновлять каждые 24 часа
@@ -43,7 +45,10 @@ export const auth = betterAuth({
       maxAge: 5 * 60 // кеш на 5 минут (оптимизация)
     }
   },
+  
   advanced: {
+    useSecureCookies: true,
+    crossSubDomainCookies: { enabled: false },
     cookies: {
       // cookiePrefix: { name: "pharm-courses" },
       sessionToken: {
@@ -58,6 +63,7 @@ export const auth = betterAuth({
     }
   }
 });
+
 
 
 
