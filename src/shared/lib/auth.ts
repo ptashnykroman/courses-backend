@@ -38,31 +38,31 @@ export const auth = betterAuth({
   },
   
   session: {
-    expiresIn: 60 * 60 * 24 * 14, // 14 дней - реальная жизнь сессии
-    updateAge: 60 * 60 * 24, // обновлять каждые 24 часа
+    expiresIn: 60 * 60 * 24 * 14,
+    updateAge: 60 * 60 * 24,
     cookieCache: {
       enabled: true,
-      maxAge: 5 * 60 // кеш на 5 минут (оптимизация)
+      maxAge: 5 * 60
     }
   },
   
   advanced: {
     useSecureCookies: true,
-    crossSubDomainCookies: { enabled: false },
-    cookies: {
-      // cookiePrefix: { name: "pharm-courses" },
-      sessionToken: {
-        name: "session",
-        attributes: {
-          httpOnly: true,
-          sameSite: "none",
-          secure: true,
-          path: "/"
-        }
-      }
+    cookiePrefix: "pharm-courses",
+  },
+  
+  cookie: {
+    name: "session_token",
+    options: {
+      httpOnly: true,
+      sameSite: "none",
+      secure: true,
+      path: "/",
+      maxAge: 60 * 60 * 24 * 14,
     }
   }
 });
+
 
 
 
