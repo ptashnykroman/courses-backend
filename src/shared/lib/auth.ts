@@ -35,16 +35,28 @@ export const auth = betterAuth({
       jobTitle: { type: 'string' },
     },
   },
+  session: {
+    expiresIn: 60 * 60 * 24 * 14, // 14 дней - реальная жизнь сессии
+    updateAge: 60 * 60 * 24, // обновлять каждые 24 часа
+    cookieCache: {
+      enabled: true,
+      maxAge: 5 * 60 // кеш на 5 минут (оптимизация)
+    }
+  },
   advanced: {
     cookies: {
+      cookiePrefix: "pharm-courses",
       sessionToken: {
+        name: "session",
         attributes: {
+          httpOnly: true,
           sameSite: "none",
           secure: true,
-          partitioned: true // New browser standards will mandate this for foreign cookies
+          path: "/"
         }
       }
     }
   }
 });
+
 
