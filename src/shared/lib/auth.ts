@@ -45,7 +45,7 @@ export const auth = betterAuth({
   },
   advanced: {
     cookies: {
-      cookiePrefix: "pharm-courses",
+      // cookiePrefix: { name: "pharm-courses" },
       sessionToken: {
         name: "session",
         attributes: {
@@ -58,5 +58,6 @@ export const auth = betterAuth({
     }
   }
 });
+
 
 
