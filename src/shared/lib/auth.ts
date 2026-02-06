@@ -42,26 +42,25 @@ export const auth = betterAuth({
     updateAge: 60 * 60 * 24,
     cookieCache: {
       enabled: true,
-      maxAge: 5 * 60
-    }
+      maxAge: 5 * 60,
+    },
+
+    cookie: {
+      name: 'session',
+      options: {
+        httpOnly: true,
+        sameSite: 'none',
+        secure: true,
+        path: '/',
+      },
+    },
   },
-  
+
   advanced: {
     useSecureCookies: true,
-    cookiePrefix: "pharm-courses",
   },
-  
-  cookie: {
-    name: "session_token",
-    options: {
-      httpOnly: true,
-      sameSite: "none",
-      secure: true,
-      path: "/",
-      maxAge: 60 * 60 * 24 * 14,
-    }
-  }
 });
+
 
 
 
