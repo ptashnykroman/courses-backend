@@ -44,22 +44,25 @@ export const auth = betterAuth({
       enabled: true,
       maxAge: 5 * 60,
     },
-
-    cookie: {
-      name: 'session',
-      options: {
-        httpOnly: true,
-        sameSite: 'none',
-        secure: true,
-        path: '/',
-      },
-    },
   },
 
+  socialProviders: {},
+  
+  secret: process.env.BETTER_AUTH_SECRET || 'your-secret-key-change-this',
+  
   advanced: {
     useSecureCookies: true,
+    cookiePrefix: 'pharm-courses',
+    generateSessionToken: true,
+    defaultCookieAttributes: {
+      sameSite: 'none',
+      secure: true,
+      httpOnly: true,
+      path: '/',
+    }
   },
 });
+
 
 
 
