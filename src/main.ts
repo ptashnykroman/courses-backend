@@ -18,8 +18,8 @@ async function bootstrap() {
 
   app.useStaticAssets(join(process.cwd(), 'upload'), { prefix: '/upload/' });
 
-  // app.enableCors({ origin: 'http://localhost:5173', credentials: true });
-  app.enableCors({ origin: true, credentials: true });
+  app.enableCors({ origin: [...(process.env.TRUSTED_ORIGINS || '').split(',')], credentials: true });
+  // app.enableCors({ origin: true, credentials: true });
 
   const config = new DocumentBuilder()
     .setTitle('Pharm couses API')
@@ -40,3 +40,4 @@ async function bootstrap() {
   }
 }
 bootstrap();
+
