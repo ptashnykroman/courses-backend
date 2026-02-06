@@ -35,4 +35,16 @@ export const auth = betterAuth({
       jobTitle: { type: 'string' },
     },
   },
+  advanced: {
+    cookies: {
+      sessionToken: {
+        attributes: {
+          sameSite: "none",
+          secure: true,
+          partitioned: true // New browser standards will mandate this for foreign cookies
+        }
+      }
+    }
+  }
 });
+
